@@ -1,0 +1,26 @@
+
+{% load static %}
+<html>
+    <head>
+        <title> REGISTER </title>
+        <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    </head>
+    <body>
+        <h2> REGISTER </h2>
+        <form method ='post'>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type='submit'>Register</button>
+        </form>
+        {% if messages %}
+            <ul>
+                {% for messages in messages %}
+                    <li>{{ messages }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <p><a href = "{% url 'login' %}">Login</a></p>
+    </body>
+</html>
+
+

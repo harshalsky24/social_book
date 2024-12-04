@@ -1,0 +1,25 @@
+{% load static %}
+<html>
+    <head>
+        <title> Uploaded Files </title>
+        <link rel="stylesheet" href="{% static 'css/uploaded_files.css'%}">
+    </head>
+    <body>
+        <h2> Your Uploaded Files </h2>
+        <ul>
+            {% for file in files %}
+                <li>
+                    <b>Name: {{ file.title }}</b><br>
+                    Description: {{ file.description }}<br>
+                    Visibility: {{ file.visibility|yesno:"Public,Private" }}<br>
+                    Cost: ${{ file.cost }}<br>
+                    Published Year: {{ file.year_of_published }}<br>
+                    <a href="{{ file.file.url }}" >View File</a>
+                </li>
+            {% empty %}
+                <li>No files uploaded yet.</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
+                

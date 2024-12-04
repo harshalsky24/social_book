@@ -1,0 +1,149 @@
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    /* Light blue background for a modern look */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Container for the page content */
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+    background: #ffffff;
+    /* Clean white background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+}
+
+/* Header styling */
+h1 {
+    color: #1a73e8;
+    /* Google Blue */
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Styling for the list of files */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #f9fafb;
+    /* Slightly off-white for contrast */
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid #d1d9e6;
+    /* Subtle border */
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+li:hover {
+    background-color: #e3f2fd;
+    /* Highlight on hover */
+    transform: translateY(-2px);
+    /* Lift effect */
+}
+
+/* File details */
+li strong {
+    font-size: 1.2em;
+    color: #333333;
+    /* Dark gray for emphasis */
+}
+
+li a {
+    text-decoration: none;
+    color: #1a73e8;
+    /* Interactive blue */
+    font-weight: bold;
+    border-bottom: 1px dashed transparent;
+    /* Subtle underline */
+    transition: border-color 0.3s ease;
+}
+
+li a:hover {
+    border-color: #1a73e8;
+    /* Solid underline on hover */
+    text-decoration: none;
+}
+
+/* Visibility and additional details */
+li span {
+    font-size: 0.9em;
+    color: #5f6368;
+    /* Neutral gray */
+}
+
+li .cost {
+    font-weight: bold;
+    color: #1b5e20;
+    /* Dark green for cost */
+}
+
+/* Footer styling for "No files uploaded" */
+footer {
+    text-align: center;
+    color: #6b7280;
+    /* Muted text color */
+    margin-top: 20px;
+    font-style: italic;
+}
+
+/* Highlight for important information */
+.highlight {
+    background-color: #fff9c4;
+    /* Light yellow */
+    font-weight: bold;
+    padding: 2px 4px;
+    border-radius: 3px;
+    color: #ff6f00;
+    /* Amber text */
+    border: 1px solid #ffd54f;
+    /* Subtle amber border */
+}
+
+/* Button styles for any action buttons */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1a73e8;
+    /* Primary blue */
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background-color: #0c47a1;
+    /* Darker blue on hover */
+    transform: translateY(-2px);
+}
+
+/* Additional styles for spacing and alignment */
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.text-center {
+    text-align: center;
+}
