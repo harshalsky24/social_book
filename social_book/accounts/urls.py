@@ -8,4 +8,5 @@ urlpatterns = [
     path('authors-and-sellers/',views.authors_and_sellers, name = "authors_and_sellers"),
     path('upload-books/', views.upload_books, name = 'upload_books'),
     path('uploaded-files/', views.uploaded_files, name = 'uploaded_files'),
+    path('fetch-books/',views.fetch_books, name = "fetch_books"),
 ]

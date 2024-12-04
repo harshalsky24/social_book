@@ -5,7 +5,9 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from .models import UploadedFiles
-
+from .db_engine import engine
+from sqlalchemy import text
+from django.http import JsonResponse
 
 User = get_user_model()
 
@@ -72,4 +74,15 @@ def upload_books(request):
 def uploaded_files(request):
     files = UploadedFiles.objects.filter(user=request.user)
     return render(request,'accounts/uploaded_files.html',{'files':files})
-    
+
+
+def fetch_books(request):
+    try:
+        query =text("SELECT * FROM accounts_uploadedfiles")
+
+        with engine.connect() as connection:
+            result = connection.execute(query)
+            books = [dict(row._mapping) for row in result]
+            return JsonResponse({'books':books}, status=200)
+    except Exception as e:
+        return JsonResponse({'error':str(e)},status=500)    
