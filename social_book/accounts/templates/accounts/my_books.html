@@ -1,0 +1,35 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+{% block content %}
+<html>
+    <head>
+        <title> Your Uploaded Books</title>
+        <link rel="stylesheet" href="{% static 'css/my_books.css'%}">
+        <nav class="nav-bar">
+            <a href="{% url 'my_books' %}" class="btn">My Books</a>
+        </nav>
+    </head>
+    <body>
+            <h1>Your Uploaded Books</h1>
+            
+            {% if files %}
+                <ul>
+                    {% for file in files %}
+                        <li>
+                            <strong>{{ file.title }}</strong><br>
+                            {{ file.description }}<br>
+                            Visibility: {{ file.visibility|yesno:"Public,Private" }}<br>
+                            Cost: ${{ file.cost }}<br>
+                            Published Year: {{ file.year_of_published }}<br>
+                            <a href="{{ file.file.url }}" target="_blank">View File</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>You have not uploaded any books. <a href="{% url 'upload_books' %}">Upload a Book</a></p>
+            {% endif %}
+        {% endblock %}
+    </body>
+</html>
+
+

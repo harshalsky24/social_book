@@ -8,6 +8,13 @@ from .models import UploadedFiles
 from .db_engine import engine
 from sqlalchemy import text
 from django.http import JsonResponse
+from rest_framework.permissions import IsAuthenticated
+from .serializers import UplodedFilesSerializer
+from rest_framework.response import Response
+from rest_framework.decorators import api_view,permission_classes
+from .decorators import check_uploaded_files
+from django.core.mail import send_mail
+from django.http import HttpResponse
 
 User = get_user_model()
 
@@ -85,4 +92,36 @@ def fetch_books(request):
             books = [dict(row._mapping) for row in result]
             return JsonResponse({'books':books}, status=200)
     except Exception as e:
-        return JsonResponse({'error':str(e)},status=500)    
+        return JsonResponse({'error':str(e)},status=500) 
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def user_files(request):
+    user = request.user
+    files = UploadedFiles.objects.filter(user=user) 
+    if not files.exists():
+        return Response({"detail": "No uploaded files found for the user."}, status=404)
+
+    serializer = UplodedFilesSerializer(files, many=True)  # Serialize the data
+    return Response(serializer.data, status=200)
+
+@login_required
+@check_uploaded_files  # Apply the custom wrapper
+def my_books_view(request):
+    files = UploadedFiles.objects.filter(user=request.user)
+    if files.exists():
+        return render(request, 'accounts/my_books.html', {'files': files})
+    return redirect('upload_books')
+
+
+def send_email(request):
+    subject = 'Test Email'
+    message = 'This is a test email sent from Django using Gmail SMTP.'
+    from_email = 'harshal2495@gmail.com'
+    recipient_list = ['harshal2495@gmail.com']  
+
+    try:
+        send_mail(subject, message, from_email, recipient_list)
+        return JsonResponse({'message': 'Email sent successfully!'})
+    except Exception as e:
+        return JsonResponse({'error': str(e)})

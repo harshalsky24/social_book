@@ -1,0 +1,83 @@
+/* General styles for body */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Page header styles */
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #007BFF;
+    font-size: 2rem;
+}
+
+/* Styles for the book list */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+ul li {
+    background-color: #ffffff;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+ul li:hover {
+    transform: translateY(-5px);
+}
+
+ul li strong {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+ul li a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Styles for "No books uploaded" message */
+p {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+p a {
+    color: #007BFF;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    ul li {
+        font-size: 0.9rem;
+    }
+
+    ul li strong {
+        font-size: 1rem;
+    }
+}
