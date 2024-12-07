@@ -154,3 +154,4 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'harshal2495@gmail.com'  # Replace with your email
 EMAIL_HOST_PASSWORD = "xlwf xdaz erkf gpmn"   # Replace with your app password or email password
+
